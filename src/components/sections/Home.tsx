@@ -5,20 +5,40 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    // Check if window width is less than 1024px (lg breakpoint)
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024)
+    }
+
+    // Initial check
+    checkMobile()
+
+    // Add event listener for window resize
+    window.addEventListener('resize', checkMobile)
+
+    // Mouse move event only for desktop
     const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e
-      const centerX = window.innerWidth / 2
-      const centerY = window.innerHeight / 2
-      const moveX = (clientX - centerX) / 25
-      const moveY = (clientY - centerY) / 25
-      setMousePosition({ x: moveX, y: moveY })
+      if (!isMobile) {
+        const { clientX, clientY } = e
+        const centerX = window.innerWidth / 2
+        const centerY = window.innerHeight / 2
+        const moveX = (clientX - centerX) / 25
+        const moveY = (clientY - centerY) / 25
+        setMousePosition({ x: moveX, y: moveY })
+      }
     }
 
     window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', checkMobile)
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [isMobile])
 
   return (
     <section id="home" className="min-h-screen relative bg-gradient-to-b from-gray-900 to-gray-800 px-4 sm:px-6 lg:px-8 py-32 overflow-hidden">
@@ -47,16 +67,16 @@ export default function Home() {
               <motion.a
                 href="#contact"
                 className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-medium transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={!isMobile ? { scale: 1.05 } : undefined}
+                whileTap={!isMobile ? { scale: 0.95 } : undefined}
               >
                 Contact Me
               </motion.a>
               <motion.a
                 href="#projects"
                 className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-8 py-3 rounded-lg font-medium transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={!isMobile ? { scale: 1.05 } : undefined}
+                whileTap={!isMobile ? { scale: 0.95 } : undefined}
               >
                 View Projects
               </motion.a>
@@ -70,34 +90,34 @@ export default function Home() {
             className="relative flex justify-center items-center perspective-1000"
           >
             <motion.div
-              className="relative w-[500px] h-[500px]"
-              animate={{
+              className="relative w-[500px] h-[500px] max-w-full"
+              animate={!isMobile ? {
                 rotateX: mousePosition.y * 0.1,
                 rotateY: mousePosition.x * 0.1,
-              }}
+              } : undefined}
               transition={{ type: "spring", stiffness: 75, damping: 15 }}
-              style={{ transformStyle: 'preserve-3d' }}
+              style={{ transformStyle: !isMobile ? 'preserve-3d' : undefined }}
             >
               {/* Animated Gradient Border */}
               <motion.div
                 className="absolute -inset-4 rounded-full bg-gradient-conic from-blue-500 via-purple-500 to-blue-500"
-                animate={{ rotate: 360 }}
+                animate={!isMobile ? { rotate: 360 } : undefined}
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
               />
 
               {/* Main Image Container */}
               <motion.div 
                 className="absolute inset-0 rounded-full overflow-hidden border-4 border-white/10 bg-gray-900"
-                style={{ transform: 'translateZ(20px)' }}
+                style={{ transform: !isMobile ? 'translateZ(20px)' : undefined }}
               >
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 animate-gradient-slow">
+                <div className={`absolute inset-0 ${!isMobile ? 'animate-gradient-slow' : ''}`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-purple-400/50 to-pink-400/50" />
                   <div className="absolute inset-0 bg-gradient-to-tr from-yellow-100/30 via-green-400/30 to-cyan-400/30 mix-blend-overlay" />
                 </div> 
                 <motion.div
                   className="relative z-10 w-full h-full"
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={!isMobile ? { scale: 1.05 } : undefined}
                   transition={{ duration: 0.3 }}
                 >
                   <img
@@ -110,8 +130,8 @@ export default function Home() {
  
               <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-2xl -z-10" />
 
-              {/* Floating Elements */}
-              {[...Array(3)].map((_, i) => (
+              {/* Floating Elements - Only show on desktop */}
+              {!isMobile && [...Array(3)].map((_, i) => (
                 <motion.div
                   key={i}
                   className="absolute w-20 h-20 rounded-full bg-blue-500/10"

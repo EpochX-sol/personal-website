@@ -278,8 +278,13 @@ export default function Projects() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="glass rounded-2xl p-6 md:p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto relative z-10 scrollbar-none"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              className="glass rounded-2xl p-4 md:p-6 max-w-5xl w-full max-h-[90vh] overflow-y-auto relative z-10 scrollbar-none"
+              style={{ 
+                scrollbarWidth: 'none', 
+                msOverflowStyle: 'none',
+                overflowY: 'auto',
+                overflowX: 'hidden'
+              }}
             >
               {(() => {
                 const project = projects.find(p => p.id === selectedProject)
@@ -297,35 +302,47 @@ export default function Projects() {
                       </button>
                     </div>
 
-                    <div className="relative aspect-video rounded-lg overflow-hidden mb-6 bg-gray-900">
+                    <div className="relative w-full h-[60vh] rounded-lg overflow-hidden mb-6 bg-gray-900">
                       <img
                         src={project.images[currentImageIndex]}
-                        alt={`${project.title} - Image ${currentImageIndex + 1}`}
-                        className="w-full h-full object-contain"
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                        style={{
+                          objectPosition: 'center top'
+                        }}
                       />
                       
                       {/* Navigation Arrows */}
                       {project.images.length > 1 && (
                         <>
                           <button
-                            onClick={prevImage}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              prevImage();
+                            }}
                             className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
                           >
                             <ChevronLeft className="w-6 h-6" />
                           </button>
                           <button
-                            onClick={nextImage}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              nextImage();
+                            }}
                             className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
                           >
                             <ChevronRight className="w-6 h-6" />
                           </button>
                           
                           {/* Image Indicators */}
-                          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
+                          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-black/30 px-3 py-2 rounded-full">
                             {project.images.map((_, idx) => (
                               <button
                                 key={idx}
-                                onClick={() => setCurrentImageIndex(idx)}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setCurrentImageIndex(idx);
+                                }}
                                 className={`w-2 h-2 rounded-full transition-colors ${
                                   idx === currentImageIndex ? 'bg-white' : 'bg-white/50'
                                 }`}

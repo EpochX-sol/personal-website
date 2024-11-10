@@ -1,10 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Code, GraduationCap, Award, Briefcase, CheckCircle2, Timer, Users, GitBranch } from 'lucide-react'
-import { SKILLS } from '../../utils/constants'
-
-// Add this grouped skills constant
+import { Code, GraduationCap, Award, Briefcase, CheckCircle2 } from 'lucide-react'
+ 
 const GROUPED_SKILLS = {
   "Frontend": [
     "React",
@@ -123,8 +121,7 @@ export default function About() {
                 </div>
               </div>
             </div>
-
-            {/* Awards Section */}
+ 
             <div className="glass rounded-2xl p-8">
               <h3 className="text-2xl font-semibold mb-6 flex items-center">
                 <Award className="w-6 h-6 mr-3 text-yellow-500" />
@@ -140,8 +137,7 @@ export default function About() {
               </div>
             </div>
           </motion.div>
-
-          {/* Right Column - Skills */}
+ 
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}

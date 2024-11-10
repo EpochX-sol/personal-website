@@ -214,7 +214,7 @@ export default function Projects() {
                 <div className="relative aspect-[4/3] bg-gray-900">
                   <img
                     src={project.images[0]}
-                    alt={project.title}
+                    alt={`${project.title} preview`}
                     className="w-full h-full object-cover object-center"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent" />

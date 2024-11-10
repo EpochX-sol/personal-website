@@ -1,14 +1,22 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import App from './App'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-)
+console.log('Application starting...');
 
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-) 
+try {
+  const root = ReactDOM.createRoot(
+    document.getElementById('root') as HTMLElement
+  );
+  
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+  
+  console.log('Application rendered successfully');
+} catch (error) {
+  console.error('Failed to render application:', error);
+} 

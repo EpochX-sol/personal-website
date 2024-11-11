@@ -114,7 +114,7 @@ export default function Contact() {
                 <h4 className="text-lg font-medium mb-4">Connect with me</h4>
                 <div className="flex space-x-4">
                   <motion.a
-                    href="https://github.com/yourusername"
+                    href="https://github.com/EpochX-sol?tab=repositories"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-gray-700 p-3 rounded-lg hover:bg-gray-600 transition-colors"
@@ -123,7 +123,7 @@ export default function Contact() {
                     <Github className="w-5 h-5" />
                   </motion.a>
                   <motion.a
-                    href="https://linkedin.com/in/yourusername"
+                    href="https://linkedin.com/in/samuel-wubalem"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-gray-700 p-3 rounded-lg hover:bg-gray-600 transition-colors"
@@ -167,7 +167,7 @@ export default function Contact() {
                         id="from_name"
                         name="from_name" 
                         type="text" 
-                        placeholder="John Doe" 
+                        placeholder="..." 
                         className="bg-gray-700/50 border-gray-600 h-12 px-4 focus:border-blue-500 focus:ring-blue-500/20 transition-colors" 
                         required
                       />
@@ -178,7 +178,7 @@ export default function Contact() {
                         id="reply_to"
                         name="reply_to" 
                         type="email" 
-                        placeholder="john@example.com" 
+                        placeholder="example@example.com" 
                         className="bg-gray-700/50 border-gray-600 h-12 px-4 focus:border-blue-500 focus:ring-blue-500/20 transition-colors" 
                         required
                       />

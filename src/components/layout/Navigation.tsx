@@ -35,7 +35,6 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
-          {/* Logo */}
           <motion.a
             href="#home"
             className="text-2xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text"
@@ -44,8 +43,7 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
           >
             Samuel Wubalem
           </motion.a>
-
-          {/* Desktop Navigation */}
+ 
           <div className="hidden md:flex items-center space-x-8">
             {NAV_ITEMS.map((item) => (
               <motion.a
@@ -75,8 +73,7 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
               Contact Me
             </Button>
           </div>
-
-          {/* Mobile Menu Button */}
+ 
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -87,8 +84,7 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
           </motion.button>
         </div>
       </div>
-
-      {/* Mobile Menu */}
+ 
       <AnimatePresence>
         {menuOpen && (
           <motion.div

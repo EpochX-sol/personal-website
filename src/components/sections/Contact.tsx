@@ -19,10 +19,10 @@ export default function Contact() {
 
     try {
       const result = await emailjs.sendForm(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID', // Get from EmailJS dashboard
+        'SERVICE_ID',
+        'TEMPLATE_ID',
         formRef.current!,
-        'YOUR_PUBLIC_KEY' // Get from EmailJS dashboard
+        'PUBLIC_KEY'
       )
 
       if (result.text === 'OK') {

@@ -2,47 +2,31 @@
 
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { Download, ArrowRight } from 'lucide-react'
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    // Check if window width is less than 1024px (lg breakpoint)
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024)
     }
-
-    // Initial check
     checkMobile()
-
-    // Add event listener for window resize
     window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
-    // Mouse move event only for desktop
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isMobile) {
-        const { clientX, clientY } = e
-        const centerX = window.innerWidth / 2
-        const centerY = window.innerHeight / 2
-        const moveX = (clientX - centerX) / 25
-        const moveY = (clientY - centerY) / 25
-        setMousePosition({ x: moveX, y: moveY })
-      }
-    }
+  const downloadCV = () => {
+    window.open('/cv.pdf', '_blank')
+  }
 
-    window.addEventListener('mousemove', handleMouseMove)
-
-    // Cleanup
-    return () => {
-      window.removeEventListener('resize', checkMobile)
-      window.removeEventListener('mousemove', handleMouseMove)
-    }
-  }, [isMobile])
+  const navigateToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <section id="home" className="min-h-screen relative bg-gradient-to-b from-gray-900 to-gray-800 px-4 sm:px-6 lg:px-8 py-32 overflow-hidden">
-      {/* Background Effects */}
       <div className="absolute inset-0 bg-grid-white/[0.02] -z-10" />
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-radial from-blue-500/10 via-transparent to-transparent blur-2xl" />
@@ -63,23 +47,39 @@ export default function Home() {
               specializing in Javascript, Python, and modern web technologies. 
               Committed to creating efficient solutions and delivering exceptional results.
             </p>
-            <div className="flex gap-4">
-              <motion.a
-                href="#contact"
-                className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-medium transition-colors"
-                whileHover={!isMobile ? { scale: 1.05 } : undefined}
-                whileTap={!isMobile ? { scale: 0.95 } : undefined}
+
+            <div className="space-y-4 sm:space-y-0 sm:flex sm:gap-4">
+              <motion.button
+                onClick={() => navigateToSection('contact')}
+                className="group relative w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-xl overflow-hidden transition-all duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                Contact Me
-              </motion.a>
-              <motion.a
-                href="#projects"
-                className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-8 py-3 rounded-lg font-medium transition-colors"
-                whileHover={!isMobile ? { scale: 1.05 } : undefined}
-                whileTap={!isMobile ? { scale: 0.95 } : undefined}
+                <span className="relative z-10">Let's Connect</span>
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </motion.button>
+
+              <motion.button
+                onClick={() => navigateToSection('projects')}
+                className="group relative w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-blue-400 border-2 border-blue-400 rounded-xl overflow-hidden transition-all duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                View Projects
-              </motion.a>
+                <span className="relative z-10">View Projects</span>
+                <div className="absolute inset-0 bg-blue-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+              </motion.button>
+
+              <motion.button
+                onClick={downloadCV}
+                className="group relative w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-gray-800 text-gray-300 rounded-xl overflow-hidden transition-all duration-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Download className="w-5 h-5 transition-transform group-hover:-translate-y-1" />
+                <span className="relative z-10">Download CV</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-gray-600 transform origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-300" />
+              </motion.button>
             </div>
           </motion.div>
           
@@ -98,19 +98,16 @@ export default function Home() {
               transition={{ type: "spring", stiffness: 75, damping: 15 }}
               style={{ transformStyle: !isMobile ? 'preserve-3d' : undefined }}
             >
-              {/* Animated Gradient Border */}
               <motion.div
                 className="absolute -inset-4 rounded-full bg-gradient-conic from-blue-500 via-purple-500 to-blue-500"
                 animate={!isMobile ? { rotate: 360 } : undefined}
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
               />
 
-              {/* Main Image Container */}
               <motion.div 
                 className="absolute inset-0 rounded-full overflow-hidden border-4 border-white/10 bg-gray-900"
                 style={{ transform: !isMobile ? 'translateZ(20px)' : undefined }}
               >
-                {/* Gradient Overlay */}
                 <div className={`absolute inset-0 ${!isMobile ? 'animate-gradient-slow' : ''}`}>
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-purple-400/50 to-pink-400/50" />
                   <div className="absolute inset-0 bg-gradient-to-tr from-yellow-100/30 via-green-400/30 to-cyan-400/30 mix-blend-overlay" />
@@ -130,7 +127,6 @@ export default function Home() {
  
               <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-2xl -z-10" />
 
-              {/* Floating Elements - Only show on desktop */}
               {!isMobile && [...Array(3)].map((_, i) => (
                 <motion.div
                   key={i}

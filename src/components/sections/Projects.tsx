@@ -3,154 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ExternalLink, Github, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
-
-const projects = [
-  {
-    id: 1,
-    title: 'Ethio Tour',
-    description: 'A comprehensive tourism management system for customized travel experiences in Ethiopia.',
-    longDescription: 'As a full-stack developer using Svelte.js, Node.js, MongoDB, and Express, I created EthioTour, a comprehensive tourism management system. It features a user-friendly interface, secure booking and payment, interactive maps, reviews, multilingual support, and responsive customer support.',
-    images: [
-        '/ethiotour/image_original (6).png',
-      '/ethiotour/image_original (1).png',
-      '/ethiotour/image_original (2).png',
-      '/ethiotour/image_original (3).png',
-      '/ethiotour/image_original (4).png',
-      '/ethiotour/image_original (5).png',
-      '/ethiotour/image_original.png',
-    ],
-    tags: ['Svelte.js', 'Node.js', 'MongoDB', 'Express'],
-    liveUrl: 'https://ethiotour.com',
-    githubUrl: 'https://github.com/yourusername/ethiotour',
-    features: [
-      'User-friendly interface',
-      'Secure booking and payment',
-      'Interactive maps',
-      'Multilingual support',
-      'Customer reviews',
-      'Responsive design'
-    ]
-  },
-  {
-    id: 2,
-    title: 'Brandualist Agency',
-    description: 'A dynamic marketing agency platform showcasing creative services and portfolio management.',
-    longDescription: 'Developed a sophisticated marketing agency platform for Brandualist, a Ukraine-based creative agency. The platform revolutionizes how the agency manages and presents their creative work. Built with SvelteKit, it features an immersive portfolio showcase with dynamic animations, real-time project updates, and interactive case studies. The platform includes a custom CMS for easy content management, automated client reporting, and integrated analytics for campaign performance tracking. Advanced features include multi-language support for international clients, a dynamic pricing calculator, and a streamlined project onboarding system.',
-    images: [
-      '/brandualist/brandualist9.png',
-      '/brandualist/brandualist.png',
-      '/brandualist/brandualist1.png',
-      '/brandualist/brandualist2.png',
-      '/brandualist/brandualist3.png',
-      '/brandualist/brandualist4.png',
-      '/brandualist/brandualist5.png',
-      '/brandualist/brandualist6.png',
-      '/brandualist/brandualist7.png',
-      '/brandualist/brandualist8.png',
-        
-    ],
-    tags: ['SvelteKit', 'Three.js','Scss'],
-    liveUrl: 'https://brandualist.com',
-    githubUrl: 'https://github.com/yourusername/brandualist',
-    features: [
-      'Interactive portfolio showcase',
-      'Custom CMS integration',
-      'Real-time project updates',
-      'Campaign performance analytics',
-      'Dynamic pricing calculator',
-      'Client collaboration portal',
-      'Automated reporting system',
-      'Multi-language support'
-    ]
-  },
-  {
-    id: 3,
-    title: 'Niguss Shoe',
-    description: 'A modern e-commerce platform for premium Ethiopian handcrafted shoes.',
-    longDescription: 'Engineered a sophisticated e-commerce platform for Niguss Shoe, showcasing Ethiopia\'s finest handcrafted footwear. Built with Svelte and integrated with a robust backend, the platform offers an immersive shopping experience. Features include a dynamic product catalog with advanced filtering, 360-degree product views, size customization, and real-time inventory management. The platform also includes a custom order tracking system, integrated payment processing with local Ethiopian payment methods, and a sophisticated analytics dashboard for sales and inventory insights. Special features include a virtual try-on system, customer loyalty program, and automated email marketing integration.',
-    images: [
-      '/nigus/nigus.png',
-      '/nigus/nigus1.png',
-      '/nigus/nigus2.png',
-      '/nigus/nigus3.png',
-      '/nigus/nigus4.png',
-      '/nigus/nigus5.png',
-      '/nigus/nigus6.png',
-    ],
-    tags: ['Next js', 'Node.js', 'PostgreSQL', 'Stripe'],
-    liveUrl: 'https://niguss-shoe.com',
-    githubUrl: 'https://github.com/yourusername/niguss-shoe',
-    features: [ 
-      'Size customization system',
-      'Real-time inventory tracking',
-      'Virtual try-on feature',
-      'Multiple payment integrations',
-      'Customer loyalty program',
-      'Advanced order tracking',
-      'Analytics dashboard',
-      'Automated email marketing',
-      'Mobile-first responsive design'
-    ]
-  },
-  {
-    id: 4,
-    title: 'Felagi Jobs',
-    description: 'A comprehensive job posting and finding platform connecting Ethiopian talent with opportunities.',
-    longDescription: 'Developed Felagi Jobs, an innovative job marketplace platform specifically designed for the Ethiopian market. This platform bridges the gap between local talent and employers through advanced technology. Built with React and Node.js, it features AI-powered job matching algorithms that consider both technical skills and cultural fit. The platform includes an advanced resume builder with local context awareness, automated application tracking, and a sophisticated company verification system. Notable features include interview scheduling with timezone management, integrated video conferencing for remote interviews, and a built-in messaging system for seamless communication. The platform also offers comprehensive analytics for both employers and job seekers, helping them make data-driven decisions.',
-    images: [
-        '/felagijobs/image_original9.png',
-        '/felagijobs/image_original.png',
-        '/felagijobs/image_original1.png',
-        '/felagijobs/image_original2.png',
-        '/felagijobs/image_original3.png',
-        '/felagijobs/image_original4.png',
-        '/felagijobs/image_original5.png',
-        '/felagijobs/image_original6.png',
-        '/felagijobs/image_original7.png',
-        '/felagijobs/image_original8.png', 
-    ],
-    tags: ['React', 'Node.js', 'MongoDB', 'Express'],
-    liveUrl: 'https://felagi-jobs.com',
-    githubUrl: 'https://github.com/yourusername/felagi-jobs',
-    features: [
-      'AI-powered job matching',
-      'Local context-aware resume builder',
-      'Company verification system',
-      'Integrated video interviewing',
-      'Advanced search filters',
-      'Real-time notifications',
-      'Interview scheduling system',
-      'Analytics dashboard',
-      'Messaging platform',
-      'Mobile responsive design'
-    ]
-  },
-  {
-    id: 5,
-    title: 'VR Technologies',
-    description: 'An innovative virtual reality solutions platform for enterprise and education sectors.',
-    longDescription: 'Engineered a cutting-edge VR technology platform using Svelte, showcasing immersive virtual reality solutions for businesses and educational institutions. The platform features interactive 3D demonstrations, virtual training simulations, and comprehensive VR product catalogs. Implemented real-time WebGL rendering, advanced user analytics, and seamless integration with various VR hardware. The system includes virtual showrooms, interactive product demonstrations, and immersive training modules for corporate clients.',
-    images: [
-      '/vr/vr.png',
-      '/vr/vr2.png',
-      '/vr/vr3.png',
-      '/vr/vr4.png',	
-    ],
-    tags: ['Svelte', 'Firebase'],
-    liveUrl: 'https://vr-technologies.com',
-    githubUrl: 'https://github.com/yourusername/vr-tech',
-    features: [
-      'Interactive 3D demonstrations',
-      'Virtual training modules',
-      'Hardware compatibility checker',
-      'Real-time rendering',
-      'Performance analytics',
-      'Cross-platform support',
-      'Virtual showroom',
-      'Technical documentation'
-    ]
-  }
-]
+import { projects, Project } from '../../utils/constants'
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
@@ -310,9 +163,7 @@ export default function Projects() {
                         style={{
                           objectPosition: 'center top'
                         }}
-                      />
-                      
-                      {/* Navigation Arrows */}
+                      /> 
                       {project.images.length > 1 && (
                         <>
                           <button
@@ -333,8 +184,7 @@ export default function Projects() {
                           >
                             <ChevronRight className="w-6 h-6" />
                           </button>
-                          
-                          {/* Image Indicators */}
+                           
                           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-black/30 px-3 py-2 rounded-full">
                             {project.images.map((_, idx) => (
                               <button

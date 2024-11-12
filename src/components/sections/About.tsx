@@ -29,8 +29,7 @@ const GROUPED_SKILLS = {
   "Tools & Others": [
     "Git",
     "Docker",
-    "AWS",
-    "Linux",
+    "AWS", 
     "REST API",
     "GraphQL",
   ]

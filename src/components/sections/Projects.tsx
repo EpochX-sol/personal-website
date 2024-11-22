@@ -36,68 +36,73 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="min-h-screen relative py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+    <section 
+      id="projects" 
+      className="min-h-0 sm:min-h-screen relative py-8 sm:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900"
+    >
       <div className="absolute inset-0 bg-grid-white/[0.02] -z-10" />
       <div className="absolute inset-0 bg-gradient-radial from-purple-500/10 via-transparent to-transparent -z-10" />
 
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+        <div className="text-center mb-6 sm:mb-10">
+          <h2 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-3">
             Featured Projects
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto text-sm">
+          <p className="text-gray-400 max-w-xl mx-auto text-xs sm:text-sm">
             Explore my portfolio of web applications, showcasing expertise in modern technologies.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {visibleProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group relative"
-            >
-              <div 
-                className="glass rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 h-full flex flex-col"
-                onClick={() => setSelectedProject(project.id)}
+        <div className="relative">
+          <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 overflow-x-auto snap-x snap-mandatory pb-4 sm:overflow-x-visible sm:pb-0">
+            {visibleProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group relative flex-shrink-0 w-[85%] sm:w-auto snap-center"
               >
-                <div className="relative aspect-[4/3] bg-gray-900">
-                  <img
-                    src={project.images[0]}
-                    alt={`${project.title} preview`}
-                    className="w-full h-full object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <h3 className="text-base font-bold mb-1 text-white">{project.title}</h3>
-                    <p className="text-gray-200 text-xs line-clamp-2">{project.description}</p>
+                <div 
+                  className="glass rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 h-full flex flex-col"
+                  onClick={() => setSelectedProject(project.id)}
+                >
+                  <div className="relative aspect-[4/3] bg-gray-900">
+                    <img
+                      src={project.images[0]}
+                      alt={`${project.title} preview`}
+                      className="w-full h-full object-cover object-center"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-3">
+                      <h3 className="text-base font-bold mb-1 text-white">{project.title}</h3>
+                      <p className="text-gray-200 text-xs line-clamp-2">{project.description}</p>
+                    </div>
+                  </div>
+                  <div className="p-3 bg-gray-900/50 backdrop-blur-sm flex-1 flex flex-col justify-between">
+                    <div className="flex flex-wrap gap-1 mb-2">
+                      {project.tags.slice(0, 2).map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-0.5 bg-purple-500/10 border border-purple-500/20 rounded-full text-xs text-purple-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                      {project.tags.length > 2 && (
+                        <span className="text-xs text-purple-300">+{project.tags.length - 2}</span>
+                      )}
+                    </div>
+                    <button className="flex items-center text-xs text-purple-400 hover:text-purple-300 transition-colors group mt-auto">
+                      View Details
+                      <ArrowRight className="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform" />
+                    </button>
                   </div>
                 </div>
-                <div className="p-3 bg-gray-900/50 backdrop-blur-sm flex-1 flex flex-col justify-between">
-                  <div className="flex flex-wrap gap-1 mb-2">
-                    {project.tags.slice(0, 2).map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-0.5 bg-purple-500/10 border border-purple-500/20 rounded-full text-xs text-purple-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                    {project.tags.length > 2 && (
-                      <span className="text-xs text-purple-300">+{project.tags.length - 2}</span>
-                    )}
-                  </div>
-                  <button className="flex items-center text-xs text-purple-400 hover:text-purple-300 transition-colors group mt-auto">
-                    View Details
-                    <ArrowRight className="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         {!showAll && projects.length > 4 && (

@@ -10,7 +10,10 @@ const GROUPED_SKILLS = {
     "Svelte",
     "TypeScript",
     "TailwindCSS",
-    "HTML/CSS",
+    "shadCN",
+    "Bootstrap",
+    "MaterialUI",
+
   ],
   "Backend": [
     "Node.js",

@@ -100,7 +100,7 @@ export const projects =[
         '/felagijobs/image_original7.png',
         '/felagijobs/image_original8.png', 
     ],
-    tags: ['React', 'Node.js', 'MongoDB', 'Express'],
+    tags: ['React',"Tailwind", 'Node.js', 'MongoDB', 'Express'],
     liveUrl: 'https://felagi-jobs.com',
     githubUrl: 'https://github.com/yourusername/felagi-jobs',
     features: [ 
@@ -122,7 +122,7 @@ export const projects =[
       '/vr/vr3.png',
       '/vr/vr4.png',	
     ],
-    tags: ['Svelte', 'Firebase'],
+    tags: ['Svelte', 'Firebase','ShadCN'],
     liveUrl: 'https://vr-technologies.com',
     githubUrl: 'https://github.com/yourusername/vr-tech',
     features: [

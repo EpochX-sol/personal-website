@@ -20,7 +20,7 @@ export const projects =[
     ],
     tags: ['Svelte.js', 'Node.js', 'MongoDB', 'Express'],
     liveUrl: 'https://ethiotour.com',
-    githubUrl: 'https://github.com/yourusername/ethiotour',
+    githubUrl: 'https://github.com/EpochX-sol/Ethio-tour',
     features: [
       'User-friendly interface',
       'Secure booking and payment',
@@ -49,7 +49,7 @@ export const projects =[
     ],
     tags: ['SvelteKit', 'Three.js','Scss'],
     liveUrl: 'https://brandualist.com',
-    githubUrl: 'https://github.com/yourusername/brandualist',
+    githubUrl: 'private',
     features: [    
        'Interactive 3D demonstrations',  
       'Real-time rendering', 
@@ -72,7 +72,7 @@ export const projects =[
     ],
     tags: ['Next js', 'Node.js', 'PostgreSQL', 'Stripe'],
     liveUrl: 'https://niguss-shoe.com',
-    githubUrl: 'https://github.com/yourusername/niguss-shoe',
+    githubUrl: 'private',
     features: [ 
       'Size customization system',  
       'Multiple payment integrations',
@@ -101,8 +101,8 @@ export const projects =[
         '/felagijobs/image_original8.png', 
     ],
     tags: ['React',"Tailwind", 'Node.js', 'MongoDB', 'Express'],
-    liveUrl: 'https://felagi-jobs.com',
-    githubUrl: 'https://github.com/yourusername/felagi-jobs',
+    liveUrl: 'felagi-jobs.netlify.app',
+    githubUrl: 'https://github.com/EpochX-sol/Nigus-Shoes',
     features: [ 
       'Local context-aware resume builder',
       'Company verification system', 
@@ -123,8 +123,8 @@ export const projects =[
       '/vr/vr4.png',	
     ],
     tags: ['Svelte', 'Firebase','ShadCN'],
-    liveUrl: 'https://vr-technologies.com',
-    githubUrl: 'https://github.com/yourusername/vr-tech',
+    liveUrl: 'https://vr-technologies.web.app/',
+    githubUrl: 'private',
     features: [
       'Technical documentation'
     ]

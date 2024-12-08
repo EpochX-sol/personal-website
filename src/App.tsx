@@ -1,3 +1,4 @@
+// src/App.tsx
 'use client'
 
 import { useState } from 'react'
@@ -9,6 +10,7 @@ import Contact from './components/sections/Contact'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ErrorBoundary } from 'react-error-boundary';
 import { Suspense } from 'react';
+import './App.css'; // Ensure you import your CSS file
 
 function ErrorFallback() {
   return (
@@ -33,7 +35,7 @@ export default function App() {
               setActiveSection={setActiveSection} 
             />
             
-            <main>
+            <main className="scrollable">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

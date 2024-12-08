@@ -59,8 +59,9 @@ export default function Navigation({ activeSection, setActiveSection }: Navigati
                 {activeSection === item.id && (
                   <motion.span
                     layoutId="activeSection"
-                    className="absolute inset-0 -z-10 rounded-md bg-blue-500/10"
+                    className="absolute inset-0 -z-10 rounded-md bg-blue-600/50"
                     transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                    style={{ height: '120%', width: '120%', top: '-10%', left: '-10%' }}
                   />
                 )}
                 {item.label}

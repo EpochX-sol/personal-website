@@ -6,7 +6,9 @@ import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { Textarea } from "../ui/textarea"
 import { Mail, Github, Linkedin, Send, Phone, MapPin } from 'lucide-react'
-import emailjs from '@emailjs/browser'
+import { Resend } from 'resend'
+ 
+const resend = new Resend('re_QVxefsEF_EjBJUr5wFkhLREihQV8rv8Am');
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -17,21 +19,21 @@ export default function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    try {
-      const result = await emailjs.sendForm(
-        'SERVICE_ID',
-        'TEMPLATE_ID',
-        formRef.current!,
-        'PUBLIC_KEY'
-      )
+    try { 
+        const response = await resend.emails.send({
+            from: formRef.current?.reply_to.value,  
+            to: 'samuelwebalemm@gmail.com',  
+            subject: 'New Message from Contact Form',
+            html: `<p>You have a new message from ${formRef.current?.from_name.value}:</p><p>${formRef.current?.message.value}</p>`,
+        });
 
-      if (result.text === 'OK') {
-        setSubmitted(true)
-      }
+        if (response) {
+            setSubmitted(true)
+        }
     } catch (error) {
-      console.error('Error sending email:', error) 
+        console.error('Error sending email:', error) 
     } finally {
-      setIsSubmitting(false)
+        setIsSubmitting(false)
     }
   }
 
@@ -90,7 +92,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Phone</p>
-                    <a href="tel:+1234567890" className="hover:text-blue-400">
+                    <a href="tel:+251910106422" className="hover:text-blue-400">
                       +251 910 106 422
                     </a>
                   </div>
@@ -156,7 +158,7 @@ export default function Contact() {
                     <Mail className="w-8 h-8 text-blue-500" />
                   </div>
                   <h4 className="text-xl font-semibold mb-2">Thank you for your message!</h4>
-                  <p className="text-gray-400">We'll get back to you as soon as possible.</p>
+                  <p className="text-gray-400">I'll get back to you as soon as possible.</p>
                 </motion.div>
               ) : (
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 flex-1">

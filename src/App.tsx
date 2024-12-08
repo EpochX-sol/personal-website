@@ -1,7 +1,7 @@
 // src/App.tsx
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navigation from './components/layout/Navigation'
 import Home from './components/sections/Home'
 import About from './components/sections/About'
@@ -23,7 +23,34 @@ function ErrorFallback() {
 }
 
 export default function App() {
-  const [activeSection, setActiveSection] = useState('home')
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const sections = document.querySelectorAll('section');
+    const options = {
+      root: null,  
+      rootMargin: '0px',
+      threshold: 0.5  
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id); 
+           }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section); 
+    });
+
+    return () => {
+      sections.forEach(section => {
+        observer.unobserve(section); 
+      });
+    };
+  }, []);
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ExternalLink, Github, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
-import { projects, Project } from '../../utils/constants'
+import { projects } from '../../utils/constants'
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null)

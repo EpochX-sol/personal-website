@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Code, GraduationCap, Award, Briefcase, CheckCircle2 } from 'lucide-react'
  
-const GROUPED_SKILLS = {
+const Skills = {
   "Frontend": [
     "React",
     "Next.js",
@@ -16,18 +16,18 @@ const GROUPED_SKILLS = {
 
   ],
   "Backend": [
-    "Node.js",
-    "Python",
+    "Node.js", 
     "Go",
-    "Express",
     "FastAPI",
     "Django",
+    ".Net"
   ],
   "Database": [
     "PostgreSQL",
     "MongoDB",
     "MySQL",
     "Redis",
+    "Supabase"
   ],
   "Tools & Others": [
     "Git",
@@ -153,7 +153,7 @@ export default function About() {
                 Technical Skills
               </h3>
               <div className="space-y-6">
-                {Object.entries(GROUPED_SKILLS).map(([category, skills], categoryIndex) => (
+                {Object.entries(Skills).map(([category, skills], categoryIndex) => (
                   <div key={category}>
                     <h4 className="text-lg font-semibold text-gray-300 mb-3 flex items-center">
                       <span className={`w-2 h-2 rounded-full mr-2 ${

@@ -7,8 +7,7 @@ const Skills = {
   "Frontend": [
     "React",
     "Next.js",
-    "Svelte",
-    "TypeScript",
+    "Svelte", 
     "TailwindCSS",
     "shadCN",
     "Bootstrap",

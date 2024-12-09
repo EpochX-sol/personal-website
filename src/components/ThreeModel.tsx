@@ -53,7 +53,7 @@ const ThreeModel: React.FC<Props> = ({ onLoadComplete }) => {
 
     const loader = new FBXLoader();
     loader.load(
-      '/Standing W_Briefcase Idle (1).fbx',
+      '/Standing W_Briefcase Idle (2).fbx',
       (object) => {
         const box = new THREE.Box3().setFromObject(object);
         const center = box.getCenter(new THREE.Vector3());

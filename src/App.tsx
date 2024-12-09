@@ -1,4 +1,3 @@
- 
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
@@ -48,18 +47,16 @@ const LoadingScreen = () => {
               transition={{ duration: 1, repeat: Infinity }}
             />
           </div>
-
-          {/* Loading text */}
+ 
           <div className="flex flex-col items-center gap-2">
             <motion.h2 
               className="text-2xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text"
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              Loading Experience
+              Please wait
             </motion.h2>
-            
-            {/* Loading bar */}
+             
             <div className="w-48 h-1 bg-gray-800 rounded-full overflow-hidden">
               <motion.div
                 className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
@@ -74,14 +71,12 @@ const LoadingScreen = () => {
                 }}
               />
             </div>
-
-            {/* Animated dots */}
+ 
             <motion.p 
               className="text-gray-400 text-sm flex items-center gap-1"
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 2, repeat: Infinity }}
-            >
-              Preparing assets
+            > 
               <motion.span
                 animate={{ opacity: [0, 1, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity, times: [0, 0.5, 1] }}
@@ -125,9 +120,11 @@ export default function App() {
 
   const handleLoadComplete = () => { 
     loadTriggerCount.current += 1;
-     
-    if (loadTriggerCount.current === 2) {
-      setIsLoading(false);
+    
+    if (loadTriggerCount.current >= 2) {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 300);
     }
   };
 
@@ -136,7 +133,7 @@ export default function App() {
       if (isLoading) { 
         setIsLoading(false);
       }
-    }, 10000);  
+    }, 10000);
 
     return () => clearTimeout(timeout);
   }, [isLoading]);

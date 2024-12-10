@@ -14,8 +14,7 @@ import './App.css'
 const LoadingScreen = () => {
   return (
     <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
-      <div className="relative flex flex-col items-center">
-        {/* Glowing background effect */}
+      <div className="relative flex flex-col items-center"> 
         <div className="absolute inset-0 blur-3xl opacity-50">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse" />
         </div>

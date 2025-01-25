@@ -42,7 +42,7 @@ export const projects =[
     ],
     tags: ['React', 'Tailwind CSS', 'Framer Motion', 'JavaScript'],
     liveUrl: 'https://epochx-agency.vercel.app/',
-    githubUrl: 'https://github.com/EpochX-sol/agency-website',
+    githubUrl: 'https://github.com/EpochX-sol/epochx-agency',
     features: [
       'Responsive design',
       'Smooth scroll navigation',

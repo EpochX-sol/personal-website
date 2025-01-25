@@ -29,8 +29,33 @@ export const projects =[
       'Responsive design'
     ]
   },
-  {
+ {
     id: 2,
+    title: 'EpochX Agency',
+    description: 'A modern and dynamic creative agency website showcasing services and portfolio.',
+    longDescription: 'Developed a sophisticated creative agency website using React and Tailwind CSS. The website features smooth scrolling navigation, interactive UI elements, responsive design, and dynamic content sections. Built with a focus on performance and user experience.',
+    images: [
+      '/epochx/desktop-preview.jpg',
+      '/epochx/desktop-design.jpg',
+      '/epochx/mobile-design.jpg',
+      '/epochx/mobile-menu.jpg',
+    ],
+    tags: ['React', 'Tailwind CSS', 'Framer Motion', 'JavaScript'],
+    liveUrl: 'https://epochx-agency.vercel.app/',
+    githubUrl: 'https://github.com/EpochX-sol/agency-website',
+    features: [
+      'Responsive design',
+      'Smooth scroll navigation',
+      'Interactive UI elements',
+      'Dynamic content sections',
+      'Modern animations',
+      'Portfolio showcase',
+      'Testimonials carousel',
+      'Mobile-first approach'
+    ]
+  },
+  {
+    id: 3,
     title: 'Brandualist Agency',
     description: 'A dynamic marketing agency website.',
     longDescription: 'Developed a sophisticated marketing agency platform for Brandualist, a Ukraine-based creative agency. Built with SvelteKit, it features an immersive portfolio showcase with dynamic animations, and interactive UI.',
@@ -57,7 +82,7 @@ export const projects =[
     ]
   },
   {
-    id: 3,
+    id: 4,
     title: 'Niguss Shoe',
     description: 'A modern e-commerce platform for premium Ethiopian handcrafted shoes.',
     longDescription: 'Engineered a sophisticated e-commerce platform for Niguss Shoe, showcasing Ethiopia\'s finest handcrafted footwear. Built with Svelte and integrated with a robust backend, the platform offers an immersive shopping experience. Features include a dynamic product catalog with advanced filtering, 360-degree product views, size customization, and real-time inventory management. The platform also includes a custom order tracking system, integrated payment processing with local Ethiopian payment methods, and a sophisticated analytics dashboard for sales and inventory insights. Special features include a virtual try-on system, customer loyalty program, and automated email marketing integration.',
@@ -84,7 +109,7 @@ export const projects =[
     ]
   },
   {
-    id: 4,
+    id: 5,
     title: 'Felagi Jobs',
     description: 'A comprehensive job posting and finding platform connecting Ethiopian talent with opportunities.',
     longDescription: 'Developed Felagi Jobs, an innovative job marketplace platform specifically designed for the Ethiopian market. This platform bridges the gap between local talent and employers through advanced technology. Built with React and Node.js. Automated application tracking, and a sophisticated company verification system. Notable features include interview scheduling with timezone management. The platform also offers comprehensive analytics for both employers and job seekers, helping them make data-driven decisions.',
@@ -112,7 +137,7 @@ export const projects =[
     ]
   },
   {
-    id: 5,
+    id: 6,
     title: 'VR Technologies',
     description: 'An Interactive landing page for a company called VR Technologies.',
     longDescription: 'Engineered a cutting-edge Website using Svelte.',

@@ -164,9 +164,9 @@ export default function Projects() {
                       <img
                         src={project.images[currentImageIndex]}
                         alt={project.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                         style={{
-                          objectPosition: 'center top'
+                          backgroundColor: 'rgb(17, 24, 39)'
                         }}
                       /> 
                       {project.images.length > 1 && (

@@ -95,11 +95,15 @@ export default function About() {
                   <ul className="mt-4 space-y-2 text-gray-300">
                     <li className="flex items-start">
                       <CheckCircle2 className="w-5 h-5 mr-2 text-blue-500 shrink-0 mt-0.5" />
-                      <span>Develop and maintain applications using Frappe ERP framework</span>
+                      <span>Develop and maintain applications using Frappe framework</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle2 className="w-5 h-5 mr-2 text-blue-500 shrink-0 mt-0.5" />
                       <span>Implement AI automation solutions to enhance business processes</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle2 className="w-5 h-5 mr-2 text-blue-500 shrink-0 mt-0.5" />
+                      <span>Implement backend by using .NET</span>
                     </li>
                   </ul>
                 </div>
@@ -112,11 +116,11 @@ export default function About() {
                   <ul className="mt-4 space-y-2 text-gray-300">
                     <li className="flex items-start">
                       <CheckCircle2 className="w-5 h-5 mr-2 text-purple-500 shrink-0 mt-0.5" />
-                      <span>Specialize in frontend development using Svelte and SvelteKit</span>
+                      <span>Specialize in frontend development using Svelte, SvelteKit and React</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle2 className="w-5 h-5 mr-2 text-purple-500 shrink-0 mt-0.5" />
-                      <span>Implement backend solutions using Go lang</span>
+                      <span>Implement backend solutions using Node js</span>
                     </li>
                   </ul>
                 </div>
